@@ -3,12 +3,18 @@ require 'docking_station.rb'
 describe DockingStation do
   before do 
     @docking_station = DockingStation.new
-    @bike1 = double(:bike1)
+    @bike1 = double(:bike1, :working? => true)
     @bike2 = double(:bike2)
   end
 
   it 'raises an error if no bikes are available' do
     expect { @docking_station.release_bike }.to raise_error "No bikes available"
+  end
+  
+    it 'checks a released bike is working' do
+    @docking_station.dock(@bike1)
+    @docking_station.dock(@bike2, "broken")
+    expect(@docking_station.release_bike).to eq @bike1
   end
   
   it 'checks docking station is functional' do
