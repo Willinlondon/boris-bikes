@@ -11,7 +11,7 @@ class DockingStation
   
   def release_bike
     raise "No bikes available" if empty?
-    bike = @bikes.pop
+    @bikes.pop
   end
   
   def dock(bike, condition = "working")

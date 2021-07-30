@@ -3,8 +3,8 @@ require 'docking_station.rb'
 describe DockingStation do
   before do 
     @docking_station = DockingStation.new
-    @bike1 = Bike.new(73, "working")
-    @bike2 = Bike.new(11, "working")
+    @bike1 = double(:bike1)
+    @bike2 = double(:bike2)
   end
 
   it 'raises an error if no bikes are available' do
@@ -18,7 +18,7 @@ describe DockingStation do
   end
 
   it 'checking docking station capacity' do
-    @docking_station.capacity.times { @docking_station.dock(Bike.new) }
+    @docking_station.capacity.times { @docking_station.dock(@bike1) }
     expect { @docking_station.dock(@bike2) }.to raise_error "Docking station is full"
   end
   
