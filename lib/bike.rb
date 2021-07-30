@@ -1,9 +1,11 @@
 class Bike
-  def initialize(number = 99, condition ="working")
+  def initialize(number = 99)
     @number = number
-    @condition = condition
   end
   def working?
-    @condition == "working"
+    if @condition == "broken"
+      false
+    else true
+    end
   end
 end

@@ -27,6 +27,9 @@ describe DockingStation do
     expect(@docking_station).to have_attributes(:bikes => [@bike1])
   end
 
+  it "you can return bikes as broken" do
+    expect(@docking_station.dock(@bike1, "broken").last).to eq(@docking_station.broken_bikes.last)
+  end
 
 
 end
