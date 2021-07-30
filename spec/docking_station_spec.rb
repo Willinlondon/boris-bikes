@@ -18,7 +18,7 @@ describe DockingStation do
   end
 
   it 'checking docking station capacity' do
-    DEFAULT_CAPACITY.times { @docking_station.dock(Bike.new) }
+    @docking_station.capacity.times { @docking_station.dock(Bike.new) }
     expect { @docking_station.dock(@bike2) }.to raise_error "Docking station is full"
   end
   
