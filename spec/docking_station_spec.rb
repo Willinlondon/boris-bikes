@@ -16,9 +16,9 @@ describe DockingStation do
     expect(@bike1.working?).to eq true
     expect(@docking_station).to respond_to(:dock)
   end
-  
-    it 'checking docking station capacity' do
-    20.times { @docking_station.dock(Bike.new) }
+
+  it 'checking docking station capacity' do
+    DEFAULT_CAPACITY.times { @docking_station.dock(Bike.new) }
     expect { @docking_station.dock(@bike2) }.to raise_error "Docking station is full"
   end
   
@@ -26,5 +26,7 @@ describe DockingStation do
     @docking_station.dock(@bike1)
     expect(@docking_station).to have_attributes(:bikes => [@bike1])
   end
+
+
 
 end
